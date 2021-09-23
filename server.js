@@ -8,11 +8,11 @@ app.get('/',function(req,res){
 });
 
 app.get('/AddHours', function(req,res){
-    res.sendFile(path.resolve('./pages/AddHoursPage.html'));
+	res.sendFile(path.resolve('./pages/AddHoursPage.html'));
 });
 
 app.get('/Home', function(req,res){
-    res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
+	res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
 });
 
 app.get('/Login',function(req,res){
