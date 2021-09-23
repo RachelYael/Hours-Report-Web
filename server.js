@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const path= require('path');
-
+app.use('/assets',express.static('assets'));
 
 app.get('/',function(req,res){
 	res.sendFile(path.resolve('./pages/WelcomePage.html'));
