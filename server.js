@@ -7,6 +7,10 @@ app.get('/',function(req,res){
 	res.sendFile(path.resolve('./pages/WelcomePage.html'));
 });
 
+app.get('/Home', function(req,res){
+    res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
+});
+
 app.get('/Login',function(req,res){
 	res.sendFile(path.resolve('./pages/Login.html'));
 });
