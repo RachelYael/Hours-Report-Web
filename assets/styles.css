@@ -38,8 +38,12 @@ body {
     border-color: #8e5b5b;
 }
 
-.form-signin input[type="password"] {
+.bottom {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+.midlle {
+    margin-bottom: -1px;
+    border-radius: 0;
+  }
