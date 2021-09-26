@@ -20,20 +20,28 @@
     }
 
     button{
-        font-size: 18px;
+        font-size: 14px;
         border-radius: 10px;
-        font-style: italic;
+        font-style: normal;
         color:black;
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     }
+
 </style>
 <body>
-    <h1><b>Add Your Hours</b></h1>
+    <!-- <div class="dropdown" style="left: 250px;"> -->
+    <button type="button" class="btn btn-dark" style="margin-left: 12cm;" 
+    onclick="history.back()">Back</button>
+    <h1 ><b>Add Your Hours</b></h1>
     <img src="/assets/clock.png" width="30" height="30" >
-    <div style="text-align: center; margin-top: 1cm;">
-        <label style="color: black;">please enter your hours:<br><br> </label>
+    <div style="text-align: center; margin-top: 0.5cm;">
+        <label style="color: black;">Please enter amount of hours<br><br> </label>
     </div>
         <input type="text" id="hours" name="hours" placeholder="Enter hours here">
+        <div style="margin-top: 0.5cm;">
+            <button class="btn btn-success" type ="submit" style="border-color: unset; margin-bottom: 0.5cm; font-size: 14px;" >
+            Submit</button>
+        </div>
    
 
 
