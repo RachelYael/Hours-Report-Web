@@ -19,7 +19,7 @@ const User = mongoose.model('User',{
 		require:true
 	},
 	hoursDone:{
-		type:BigInt
+		type:String
 	}
 
 });
