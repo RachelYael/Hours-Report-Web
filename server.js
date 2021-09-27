@@ -32,6 +32,38 @@ app.get('/Login',function(req,res){
 	res.sendFile(path.resolve('./pages/Login.html'));
 });
 
+app.post('/Login',async function(req,res){
+    var username = req.body.Username;
+    var password = req.body.Password;
+    try{
+		const user = await UserModel.findOne({username:username});
+	if(!user){
+		throw new Error('This username: '+username+' already taken!\nPlease try somthing else.');
+	}
+	//const newUser = await UserModel.create({username,password,totalHours,totalMoney});
+	}
+	catch(error){
+		console.log("ERROR!\n"+error);
+		res.sendFile(path.resolve('./pages/Error.html'));
+	}
+	// TODO=> Validetion:
+	// 	   check the hours&money is numbers , >=0
+
+	res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
+    // try{
+    //     const user = await UserModel.findOne({username:username, password:password});
+    //     if(!user){
+    //         throw new Error('Wrong details');
+    //     }
+    //     // if(!user){
+    //     //     window.alert("wrong data");
+    //     // }
+    // }catch(error){
+    //     console.log("login faild\n" + error);
+    // }
+    //  res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
+});
+
 app.get('/Register',function(req,res){
 	res.sendFile(path.resolve('./pages/Register.html'));
 });
@@ -44,7 +76,7 @@ app.post('/Register',async function(req,res){
 	try{
 		const user = await UserModel.findOne({username:username});
 	if(user){
-		throw new Error('This username: '+username+' allready taken!\nPlease try somthing else.');
+		throw new Error('This username: '+username+' already taken!\nPlease try somthing else.');
 	}
 	const newUser = await UserModel.create({username,password,totalHours,totalMoney});
 	}
@@ -61,6 +93,7 @@ app.post('/Register',async function(req,res){
 app.post('/Error',function(req,res){
 	res.redirect('/Register');
 });
+
 const myPORT = process.env.PORT || 3000;
 app.listen(myPORT, function(){
 	console.log('Server listen to port:'+myPORT);
