@@ -25,11 +25,9 @@ app.get('/AddHours', function(req,res){
 	res.sendFile(path.resolve('./pages/AddHoursPage.html'));
 });
 
-//
-app.get('/Home/:id', function(req,res){
-	res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
-});
-//
+// app.get('/Home/:id', function(req,res){
+// 	res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
+// });
 
 app.get('/Home', function(req,res){
 	res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
@@ -55,9 +53,11 @@ app.post('/Login',async function(req,res){
         console.log("login faild\n" + error);
 		res.sendFile(path.resolve('./pages/LoginError.html'));
     }
-    //res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
-     //res.sendFile(`/Home/${username}`);
-     res.send(`/Home/${username}`);
+    res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
+    //res.sendFile(path.resolve('./pages/VolunteerHomePage.html'), username);
+    //  //res.sendFile(`/Home/${username}`);
+    //  res.send(`/Home/${username}`);
+    //  //res.Username
 });
 
 app.get('/Register',function(req,res){
