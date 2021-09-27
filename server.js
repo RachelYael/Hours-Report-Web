@@ -66,7 +66,7 @@ app.post('/Register',async function(req,res){
 	if(user){
 		throw new Error('This username: '+username+' already taken!\nPlease try somthing else.');
 	}
-	const newUser = await UserModel.create({username,password,totalHours,totalMoney,0});
+	const newUser = await UserModel.create({username,password,totalHours,totalMoney});
 	}
 	catch(error){
 		console.log("ERROR!\n"+error);
