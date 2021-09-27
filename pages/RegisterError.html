@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Error!</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    </head>
+    <style>
+        body{
+            text-align: center; 
+            background-color: #d68488;
+            color: black;
+            font-size: larger;
+            font-style: normal;
+            font-family: Arial, Helvetica, sans-serif;
+    
+        }
+    
+
+    </style>
+<body>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4" style="font-size: 80px;"><b>Error !</b></h1>
+          <h2 style="margin-top: 1cm; "><b>Register faild</b></h2>
+          <p class="lead" style="margin-top: 1cm; "> <b>You must fill all fields<br><br>Make sure that fields that contain numbers do have numbers<br><br> Please try again</b></p>
+          <form action="/RegisterError" method="POST">
+              <button class="btn btn-lg btn-warning" type="submit" style="margin-top: 1cm;">Try Again</button>
+          </form>
+        </div>
+      </div>
+</body>
+</html>

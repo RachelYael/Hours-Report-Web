@@ -63,26 +63,27 @@ app.post('/Login',async function(req,res){
 app.get('/Register',function(req,res){
 	res.sendFile(path.resolve('./pages/Register.html'));
 });
-
 app.post('/Register',async function(req,res){
 	var username = req.body.Username;
 	var password = req.body.Password;
 	var totalHours = req.body.Hours;
 	var totalMoney = req.body.Money;
+
+	if(username ===""||password===""||totalHours==="" || totalMoney==""||isNaN(totalMoney)||isNaN(totalHours))
+	{
+		res.sendFile(path.resolve('./pages/RegisterError.html'));
+	}
 	try{
 		const user = await UserModel.findOne({username:username});
-	if(user){
-		throw new Error('This username: '+username+' already taken!\nPlease try somthing else.');
-	}
-	const newUser = await UserModel.create({username,password,totalHours,totalMoney, hoursDone:"0"});
+		if(user){
+			throw new Error('This username: '+username+' already taken!\nPlease try somthing else.');
+		}
+		const newUser = await UserModel.create({username,password,totalHours,totalMoney, hoursDone:"0"});
 	}
 	catch(error){
 		console.log("ERROR!\n"+error);
 		res.sendFile(path.resolve('./pages/Error.html'));
 	}
-	// TODO=> Validetion:
-	// 	   check the hours&money is numbers , >=0
-
 	res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
 });
 
@@ -94,6 +95,9 @@ app.post('/LoginError',function(req,res){
 	res.redirect('/Login');
 });
 
+app.post('/RegisterError',function(req,res){
+	res.redirect('/Register');
+});
 const myPORT = process.env.PORT || 3000;
 app.listen(myPORT, function(){
 	console.log('Server listen to port:'+myPORT);
