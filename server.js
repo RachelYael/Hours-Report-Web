@@ -30,7 +30,6 @@ app.get('/Home', function(req,res){
 });
 
 app.get('/Login',function(req,res){
-    console.log('in login - GET');
 	res.sendFile(path.resolve('./pages/Login.html'));
 });
 
@@ -49,6 +48,7 @@ app.post('/Login',async function(req,res){
         // }
     }catch(error){
         console.log("login faild\n" + error);
+        window.alert("login faild");
     }
      res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
 });
