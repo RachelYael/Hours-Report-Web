@@ -7,6 +7,7 @@ const app = express();
 app.set('view engine','ejs');
 const path= require('path');
 const { readFile } = require('fs');
+const { Console } = require('console');
 const UserModel = require(path.resolve('./models/User.js'));
 mongoose.connect('mongodb://root:example@localhost:27017/',{
 		dbName:'myapp',
@@ -29,39 +30,27 @@ app.get('/Home', function(req,res){
 });
 
 app.get('/Login',function(req,res){
+    console.log('in login - GET');
 	res.sendFile(path.resolve('./pages/Login.html'));
 });
 
 app.post('/Login',async function(req,res){
+    console.log('in login - POST');
     var username = req.body.Username;
     var password = req.body.Password;
     try{
-		const user = await UserModel.findOne({username:username});
-	if(!user){
-		throw new Error('This username: '+username+' already taken!\nPlease try somthing else.');
-	}
-	//const newUser = await UserModel.create({username,password,totalHours,totalMoney});
-	}
-	catch(error){
-		console.log("ERROR!\n"+error);
-		res.sendFile(path.resolve('./pages/Error.html'));
-	}
-	// TODO=> Validetion:
-	// 	   check the hours&money is numbers , >=0
-
-	res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
-    // try{
-    //     const user = await UserModel.findOne({username:username, password:password});
-    //     if(!user){
-    //         throw new Error('Wrong details');
-    //     }
-    //     // if(!user){
-    //     //     window.alert("wrong data");
-    //     // }
-    // }catch(error){
-    //     console.log("login faild\n" + error);
-    // }
-    //  res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
+        const user = await UserModel.findOne({username:username, password:password});
+        console.log(username +"\n" + password);
+        if(!user){
+            throw new Error('Wrong details');
+        }
+        // if(!user){
+        //     window.alert("wrong data");
+        // }
+    }catch(error){
+        console.log("login faild\n" + error);
+    }
+     res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
 });
 
 app.get('/Register',function(req,res){
