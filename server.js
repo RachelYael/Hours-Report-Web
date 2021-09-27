@@ -50,19 +50,12 @@ app.post('/Register',async function(req,res){
 	}
 	catch(error){
 		console.log("ERROR!\n"+error);
-		// TODO: Why this dont work???? 
-		 //readFile(path.resolve('./pages/Error.html'));
 		res.sendFile(path.resolve('./pages/Error.html'));
-
-		//res.send("<h1>error !</h1>");
 	}
 	// TODO=> Validetion:
 	// 	   check the hours&money is numbers , >=0
 
-	
-	//TODO => idk how to take the user to the home page. Thes dosent work.....
 	res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
-	//return res.redirect(path.resolve('./pages/VolunteerHomePage.html'));
 });
 
 app.post('/Error',function(req,res){
