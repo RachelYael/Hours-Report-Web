@@ -34,18 +34,13 @@ app.get('/Login',function(req,res){
 });
 
 app.post('/Login',async function(req,res){
-    console.log('in login - POST');
     var username = req.body.Username;
     var password = req.body.Password;
     try{
         const user = await UserModel.findOne({username:username, password:password});
-        console.log(username +"\n" + password);
         if(!user){
             throw new Error('Wrong details');
         }
-        // if(!user){
-        //     window.alert("wrong data");
-        // }
     }catch(error){
         console.log("login faild\n" + error);
 		res.sendFile(path.resolve('./pages/LoginError.html'));
