@@ -56,7 +56,8 @@ app.post('/Login',async function(req,res){
 		res.sendFile(path.resolve('./pages/LoginError.html'));
     }
     //res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
-     res.sendFile(`/Home/${username}`);
+     //res.sendFile(`/Home/${username}`);
+     res.send(`/Home/${username}`);
 });
 
 app.get('/Register',function(req,res){
