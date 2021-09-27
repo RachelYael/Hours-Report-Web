@@ -48,7 +48,7 @@ app.post('/Login',async function(req,res){
         // }
     }catch(error){
         console.log("login faild\n" + error);
-        window.alert("login faild");
+		res.sendFile(path.resolve('./pages/LoginError.html'));
     }
      res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
 });
@@ -81,6 +81,10 @@ app.post('/Register',async function(req,res){
 
 app.post('/Error',function(req,res){
 	res.redirect('/Register');
+});
+
+app.post('/LoginError',function(req,res){
+	res.redirect('/Login');
 });
 
 const myPORT = process.env.PORT || 3000;
