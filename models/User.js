@@ -17,6 +17,10 @@ const User = mongoose.model('User',{
 	totalMoney:{
 		type:String,
 		require:true
+	},
+	hoursDone:{
+		type:BigInt,
+		require:true
 	}
 
 });

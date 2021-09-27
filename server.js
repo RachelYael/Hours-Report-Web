@@ -29,6 +29,10 @@ app.get('/Home', function(req,res){
 	res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
 });
 
+app.post('/Home', async function(req,res){
+	//TODO: dispaly user's data
+});
+
 app.get('/Login',function(req,res){
 	res.sendFile(path.resolve('./pages/Login.html'));
 });

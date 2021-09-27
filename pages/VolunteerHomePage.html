@@ -68,28 +68,30 @@
 </style>
 <body>
 
-    <div class="dropdown" style="left: 250px;">
-        <button class="dropbtn">Menu</button>
-        <div class="dropdown-content">
-            <a href='/AddHours'>Add hours</a>
-            <a href='/'>Logout</a>
+    <form action="/Home" method="POST">
+        <div class="dropdown" style="left: 250px;">
+            <button class="dropbtn">Menu</button>
+            <div class="dropdown-content">
+                <a href='/AddHours'>Add hours</a>
+                <a href='/'>Logout</a>
+            </div>
         </div>
-    </div>
-    <div>
-        <h1 style="text-align: center;"><b>Hello</b></h1>
-    </div>
-    <div style="text-align: left; margin-top: 1cm;">
-        <label style="margin-left: 3cm;">Hours until today: </label>
-        <input type="text" id="hoursDone" name="hoursDone"><br><br>
-    </div>
-    <div style="text-align: left;">
-        <label style="margin-left: 4.6cm;">Hours left: </label>
-        <input type="text" id="hoursLeft" name="hoursDone"><br><br>
-    </div>
-    <div style="text-align: left;">
-        <label>Amount of money you did: </label>
-        <input type="text" id="money" name="money"><br><br>
-    </div>
+        <div>
+            <h1 style="text-align: center;"><b>Hello</b></h1>
+        </div>
+        <div style="text-align: left; margin-top: 1cm;">
+            <label style="margin-left: 3cm;">Hours until today: </label>
+            <input type="text" id="hoursDone" name="hoursDone"><br><br>
+        </div>
+        <div style="text-align: left;">
+            <label style="margin-left: 4.6cm;">Hours left: </label>
+            <input type="text" id="hoursLeft" name="hoursDone"><br><br>
+        </div>
+        <div style="text-align: left;">
+            <label>Amount of money you did: </label>
+            <input type="text" id="money" name="money"><br><br>
+        </div>
+    </form>
 
 
 </body>
