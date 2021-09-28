@@ -30,6 +30,7 @@ app.get('/AddHours', function(req,res){
 // });
 
 app.get('/Home', function(req,res){
+    res.render("Home", {hoursDone: done, hoursLeft: left, money: money});
 	res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
 });
 
@@ -40,7 +41,8 @@ app.post('/Home', async function(req,res){
     var done = 5;
     var left = 6;
     var money = 7;
-    res.render("Home", {hoursDone: done, hoursLeft: left, money: money});
+    //res.render("Home", {hoursDone: done, hoursLeft: left, money: money});
+    res.redirect("/Home");
 	//TODO: dispaly user's data
 });
 
