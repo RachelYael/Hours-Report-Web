@@ -33,10 +33,11 @@ app.get('/AddHours', function(req,res){
 // 	res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
 // });
 
-// app.post('/Home', async function(req,res){
-//     console.log(await UserModel.username);
-// 	//TODO: dispaly user's data
-// });
+app.post('/Home', async function(req,res){
+    document.getElementsByName(hoursDone).value = "hello";
+    console.log(await UserModel.username);
+	//TODO: dispaly user's data
+});
 
 app.get('/Login',function(req,res){
 	res.sendFile(path.resolve('./pages/Login.html'));
@@ -58,7 +59,10 @@ app.post('/Login',async function(req,res){
         console.log("login faild\n" + error);
 		res.sendFile(path.resolve('./pages/LoginError.html'));
     }
-    res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
+    //res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
+    res.send(useranme +"\nHours Done: " + user.hoursDone +
+    "\nHours Left: " + user.totalHours-user.hoursDone +
+    "\nMoney: " + (user.totalMoney/user.totalHours)*user.hoursDone);
     //res.sendFile(path.resolve('./pages/VolunteerHomePage.html'), username);
     //  //res.sendFile(`/Home/${username}`);
     //  res.send(`/Home/${username}`);
