@@ -1,14 +1,16 @@
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-// const request = require('request');
 
 const express = require('express');
 const app = express();
+
 app.set('view engine','ejs');
 const path= require('path');
 const { readFile } = require('fs');
 const { Console } = require('console');
+
 const UserModel = require(path.resolve('./models/User.js'));
+
 mongoose.connect('mongodb://root:example@localhost:27017/',{
 		dbName:'myapp',
 		useNewUrlParser : true}).then(console.log("mongoose connected"));
@@ -25,11 +27,8 @@ app.get('/AddHours', function(req,res){
 	res.sendFile(path.resolve('./pages/AddHoursPage.html'));
 });
 
-// app.get('/Home/:id', function(req,res){
-// 	res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
-// });
 
-app.get('/Home', function(req,res){
+app.get('/Home',async function(req,res){
 	res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
 });
 
@@ -40,7 +39,6 @@ app.post('/Home', async function(req,res){
 app.get('/Login',function(req,res){
 	res.sendFile(path.resolve('./pages/Login.html'));
 });
-
 app.post('/Login',async function(req,res){
     var username = req.body.Username;
     var password = req.body.Password;
@@ -53,16 +51,19 @@ app.post('/Login',async function(req,res){
         console.log("login faild\n" + error);
 		res.sendFile(path.resolve('./pages/LoginError.html'));
     }
-    res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
-    //res.sendFile(path.resolve('./pages/VolunteerHomePage.html'), username);
-    //  //res.sendFile(`/Home/${username}`);
-    //  res.send(`/Home/${username}`);
-    //  //res.Username
+	//TODO : need to see that it calc correctly (string-int issues......)
+	var moneyPerHour = user.totalMoney/user.totalHours;
+	var Dhours =user.hoursDone;
+	var money =moneyPerHour*Dhours ;
+	var leftHour = user.totalHours - Dhours;
+	res.render("HomePage",{NameMarker:username,DoneHoursMarker:Dhours,LeftHourMarker:leftHour,MoneyMarker:money});
+    
 });
 
 app.get('/Register',function(req,res){
 	res.sendFile(path.resolve('./pages/Register.html'));
 });
+
 app.post('/Register',async function(req,res){
 	var username = req.body.Username;
 	var password = req.body.Password;
@@ -84,7 +85,9 @@ app.post('/Register',async function(req,res){
 		console.log("ERROR!\n"+error);
 		res.sendFile(path.resolve('./pages/Error.html'));
 	}
-	res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
+	var Dhours =0;
+	var money =0 ;
+	res.render("HomePage",{NameMarker:username,DoneHoursMarker:Dhours,LeftHourMarker:totalHours,MoneyMarker:money});
 });
 
 app.post('/Error',function(req,res){
@@ -98,6 +101,7 @@ app.post('/LoginError',function(req,res){
 app.post('/RegisterError',function(req,res){
 	res.redirect('/Register');
 });
+
 const myPORT = process.env.PORT || 3000;
 app.listen(myPORT, function(){
 	console.log('Server listen to port:'+myPORT);
