@@ -42,7 +42,7 @@ app.post('/Home', async function(req,res){
     var money = 7;
     res.render("Home", {hoursDone: done, hoursLeft: left, money: money});
 	//TODO: dispaly user's data
-});a
+});
 
 app.get('/Login',function(req,res){
 	res.sendFile(path.resolve('./pages/Login.html'));
