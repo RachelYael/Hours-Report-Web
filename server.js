@@ -65,8 +65,8 @@ app.post('/Login',async function(req,res){
     // Hours Left: ${user.totalHours-user.hoursDone}
     // Money: ${(user.totalMoney/user.totalHours)*user.hoursDone}`);
     //res.sendFile(path.resolve('./pages/VolunteerHomePage.html'), username);
-    res.sendFile(`/Home/${username}`);
-    //  res.send(`/Home/${username}`);
+    //res.sendFile(`/Home/${username}`);
+    res.send(`/Home/${username}`);
     //  //res.Username
 });
 
