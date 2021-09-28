@@ -55,7 +55,6 @@ app.post('/Login',async function(req,res){
         if(!user){
             throw new Error('Wrong details');
         }
-        res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
         res.send(`${useranme} 
         Hours Done: ${user.hoursDone}
         Hours Left: ${user.totalHours-user.hoursDone}
