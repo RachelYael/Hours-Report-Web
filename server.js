@@ -29,15 +29,20 @@ app.get('/AddHours', function(req,res){
 // 	res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
 // });
 
-// app.get('/Home', function(req,res){
-// 	res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
-// });
+app.get('/Home', function(req,res){
+	res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
+});
 
 app.post('/Home', async function(req,res){
-    document.getElementsByName(hoursDone).value = "hello";
-    console.log(await UserModel.username);
+    // var done = user.hoursDone;
+    // var left = user.totalHours - user.hoursDone;
+    // var money = (user.totalMoney/user.totalHours) * user.hoursDone;
+    var done = 5;
+    var left = 6;
+    var money = 7;
+    res.render("Home", {hoursDone: done, hoursLeft: left, money: money});
 	//TODO: dispaly user's data
-});
+});a
 
 app.get('/Login',function(req,res){
 	res.sendFile(path.resolve('./pages/Login.html'));
@@ -59,7 +64,8 @@ app.post('/Login',async function(req,res){
         console.log("login faild\n" + error);
 		res.sendFile(path.resolve('./pages/LoginError.html'));
     }
-    res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
+    //res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
+    res.sendFile(`/Home`);
 
     // const user = await UserModel.findOne({username:username, password:password});
     
