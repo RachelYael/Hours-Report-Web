@@ -29,14 +29,14 @@ app.get('/AddHours', function(req,res){
 // 	res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
 // });
 
-app.get('/Home', function(req,res){
-	res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
-});
+// app.get('/Home', function(req,res){
+// 	res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
+// });
 
-app.post('/Home', async function(req,res){
-    console.log(await UserModel.username);
-	//TODO: dispaly user's data
-});
+// app.post('/Home', async function(req,res){
+//     console.log(await UserModel.username);
+// 	//TODO: dispaly user's data
+// });
 
 app.get('/Login',function(req,res){
 	res.sendFile(path.resolve('./pages/Login.html'));
