@@ -54,20 +54,18 @@ app.post('/Login',async function(req,res){
         const user = await UserModel.findOne({username:username, password:password});
         if(!user){
             throw new Error('Wrong details');
-        }
-        res.send(`${useranme} 
-        Hours Done: ${user.hoursDone}
-        Hours Left: ${user.totalHours-user.hoursDone}
-        Money: ${(user.totalMoney/user.totalHours)*user.hoursDone}`);        
+        }      
     }catch(error){
         console.log("login faild\n" + error);
 		res.sendFile(path.resolve('./pages/LoginError.html'));
     }
     // res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
-    // res.send(`${useranme} 
-    // Hours Done: ${user.hoursDone}
-    // Hours Left: ${user.totalHours-user.hoursDone}
-    // Money: ${(user.totalMoney/user.totalHours)*user.hoursDone}`);
+    
+    const user = await UserModel.findOne({username:username, password:password});
+    res.send(`${useranme} 
+    Hours Done: ${user.hoursDone}
+    Hours Left: ${user.totalHours-user.hoursDone}
+    Money: ${(user.totalMoney/user.totalHours)*user.hoursDone}`);
     //res.sendFile(path.resolve('./pages/VolunteerHomePage.html'), username);
     //res.sendFile(`/Home/${username}`);
     //res.send(`/Home/${username}`);
