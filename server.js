@@ -44,6 +44,10 @@ app.get('/Login',function(req,res){
 app.post('/Login',async function(req,res){
     var username = req.body.Username;
     var password = req.body.Password;
+    if(username ===""||password==="")
+	{
+		res.sendFile(path.resolve('./pages/LoginError.html'));
+	}
     try{
         const user = await UserModel.findOne({username:username, password:password});
         if(!user){
