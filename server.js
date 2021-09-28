@@ -30,12 +30,15 @@ app.get('/AddHours', function(req,res){
 // });
 
 // app.get('/Home', function(req,res){
-// 	res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
+// 	//res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
+//     res.render("Home", {})
 // });
 
 app.post('/Home', async function(req,res){
-    document.getElementsByName(hoursDone).value = "hello";
-    console.log(await UserModel.username);
+    var done = user.hoursDone;
+    var left = user.totalHours - user.hoursDone;
+    var money = (user.totalMoney/user.totalHours) * user.hoursDone;
+    res.render("Home", {hoursDone: done, hoursLeft: left, money: money});
 	//TODO: dispaly user's data
 });
 
