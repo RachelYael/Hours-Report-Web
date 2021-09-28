@@ -28,7 +28,9 @@ app.get('/AddHours', function(req,res){
 // app.get('/Home/:id', function(req,res){
 // 	res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
 // });
-
+var done = "";
+var left = "";
+var money = "";
 app.get('/Home', function(req,res){
     res.render("Home", {hoursDone: done, hoursLeft: left, money: money});
 	res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
