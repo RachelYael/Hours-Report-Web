@@ -35,7 +35,7 @@ app.get('/Home', function(req,res){
     console.log("in /Home - get");
 
     res.render("Home", {hoursDone: done, hoursLeft: left, money: money});
-	res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
+	//res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
 });
 
 app.post('/Home', async function(req,res){
