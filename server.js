@@ -46,7 +46,7 @@ app.post('/Login',async function(req,res){
     var password = req.body.Password;
     if(username ===""||password==="")
 	{
-		res.sendFile(path.resolve('./pages/LoginError.html'));
+		res.sendFile(path.resolve('./pages/LoginFieldsError.html'));
 	}
     try{
         const user = await UserModel.findOne({username:username, password:password});
@@ -96,6 +96,10 @@ app.post('/Error',function(req,res){
 });
 
 app.post('/LoginError',function(req,res){
+	res.redirect('/Login');
+});
+
+app.post('/LoginFieldsError',function(req,res){
 	res.redirect('/Login');
 });
 
