@@ -65,7 +65,7 @@ app.post('/Login',async function(req,res){
 		res.sendFile(path.resolve('./pages/LoginError.html'));
     }
     //res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
-    res.sendFile(`/Home`);
+    res.sendFile(path.resolve(`/Home`));
 
     // const user = await UserModel.findOne({username:username, password:password});
     
