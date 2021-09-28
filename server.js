@@ -34,6 +34,7 @@ app.get('/Home', function(req,res){
 });
 
 app.post('/Home', async function(req,res){
+    console.log(await UserModel.username);
 	//TODO: dispaly user's data
 });
 
