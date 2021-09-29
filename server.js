@@ -30,23 +30,28 @@ app.get('/AddHours', function(req,res){
 });
 app.post('/AddHours',async function(req,res){
 	var addedHours = req.body.hours||0;
-	if(addedHours==="" || parseInt(addedHours)<0){
-		console.log("error - the field is empty!");
-		//not the best solution but its OK 
-		res.redirect('/AddHours');
-	}
 	var user = await UserModel.findOne({username:USERNAME});
 	if(!user){
 		console.log("error in USERNAME!")
 		res.sendFile(path.resolve('./pages/ErrorField.html'));
 	}
+	if(addedHours > parseInt(user.totalHours)- parseInt(user.hoursDone) ){
+		console.log("error - the field is empty!");
+		res.redirect('/AddHours');
+	}else{
+		var actualHours = parseInt(user.hoursDone)+parseInt(addedHours);
+		var leftHours = parseInt(user.totalHours) - actualHours;
+		var money = (parseFloat(user.totalMoney)/parseFloat(user.totalHours))* actualHours;
 	
-	var time = parseInt(user.hoursDone)+parseInt(addedHours);
-	await UserModel.updateOne({username:USERNAME},{hoursDone:time});
-	var lt = parseInt(user.totalHours) - time;
-	var money = parseFloat(user.totalMoney)/parseFloat(user.totalHours)* lt;
-	console.log(user.hoursDone+" "+addedHours+" "+lt+" "+money)
-	res.render("HomePage",{NameMarker:user.username,DoneHoursMarker:time,LeftHourMarker:lt,MoneyMarker:money});
+		if(addedHours==="" || parseInt(addedHours)<0){
+			console.log("error - the field is empty!");
+			res.redirect('/AddHours');
+		}
+		await UserModel.updateOne({username:USERNAME},{hoursDone:actualHours});
+	
+		res.render("HomePage",{NameMarker:user.username,DoneHoursMarker:actualHours,LeftHourMarker:leftHours,MoneyMarker:money});
+	}
+
 });
 
 app.get('/Home',function(req,res){
