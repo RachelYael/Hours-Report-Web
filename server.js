@@ -19,7 +19,6 @@ app.use('/assets',express.static('assets'));
 app.use(bodyParser.urlencoded({extended:true}));
 
 
-var USERNAME ="";
 app.get('/',function(req,res){
 	res.sendFile(path.resolve('./pages/WelcomePage.html'));
 });
@@ -44,7 +43,7 @@ app.post('/AddHours',async function(req,res){
 		res.sendFile(path.resolve('./pages/ErrorField.html'));
 
 	}
-	if(addedHours > (parseInt(user.totalHours)- parseInt(user.hoursDone)) ){
+	if(addedHours > (parseInt(user.totalHours)- parseInt(user.hoursDone)) || parseInt(addedHours)<0 || isNaN(addedHours)){
 		console.log("error - hours added is more than hours left");
 		res.redirect('/AddHoursError');
 	}else{
@@ -52,10 +51,6 @@ app.post('/AddHours',async function(req,res){
 		var leftHours = parseInt(user.totalHours) - actualHours;
 		var money = (parseFloat(user.totalMoney)/parseFloat(user.totalHours))* actualHours;
 	
-		if(addedHours==="" || parseInt(addedHours)<0){
-			console.log("error - the field is empty!");
-			res.redirect('/AddHours');
-		}
 		await UserModel.updateOne({username:USERNAME},{hoursDone:actualHours});
 	
 		res.render("HomePage",{NameMarker:user.username,DoneHoursMarker:actualHours,LeftHourMarker:leftHours,MoneyMarker:money});
@@ -64,8 +59,7 @@ app.post('/AddHours',async function(req,res){
 });
 
 app.get('/Home',function(req,res){
-	res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
-});
+	res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));});
 app.post('/Home', async function(req,res){
 });
 

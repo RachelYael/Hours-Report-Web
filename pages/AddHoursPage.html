@@ -27,25 +27,30 @@
     }
 
 </style>
-<body>
+<body class="text-center" style="background-image: url('./assets/img-03.jpg'); 
+background-repeat: no-repeat; background-size: cover; height: 500px;">
      <!-- <button type="button" class="btn btn-dark" style="margin-left: 12cm;" 
     onclick="history.back()">Back</button> -->
     <form action="/AddHours" method="POST">
     <!-- <div class="dropdown" style="left: 250px;"> -->
    
-    <h1 ><b>Add Your Hours</b></h1>
-    <img src="/assets/clock.png" width="30" height="30" >
-    <div style="text-align: center; margin-top: 0.5cm;">
-        <label style="color: black;">Please enter amount of hours<br><br> </label>
+    <h1 class="display-1" style="margin-top: 0.5cm; color: rgba(110, 110, 110, 0.671);"><b>Add Your Hours</b></h1>
+    <div style="text-align: center; margin-top: 0.5cm; background-color: rgba(255, 255, 255, 0.746);">
+        <label class="display-6" style="color: rgba(78, 77, 77, 0.671);; font-size: larger;">Please enter amount of hours<br><br> </label>
     </div>
-        <input type="text" id="hours" name="hours" placeholder="Enter hours here">
+        <input type="text" id="hours" name="hours" placeholder="Enter hours here" style=" margin-top: 0.5cm;">
         <div style="margin-top: 0.5cm;">
-            <button class="btn btn-success" type ="submit" style="border-color: unset; margin-bottom: 0.5cm; font-size: 14px;" >
+            <button class="btn btn-secondary" type ="submit" style="background-color: rgba(110, 110, 110, 0.671); margin-top: 1cm;
+            border-color: rgba(110, 110, 110, 0.671);" >
             Submit</button>
         </div>
-   
-    </form>
+        <div style="margin-top: 0.5cm; background-color: rgba(255, 255, 255, 0.746);" >
+            <labal class="display-6" style="color: rgba(37, 37, 37, 0.671);; font-size: larger;">( To go back just click 'Submit' )</labal>
 
+        </div>
+
+    </div>
+    </form>
     
 </body>
 </html>
