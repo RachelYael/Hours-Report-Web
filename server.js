@@ -23,21 +23,30 @@ var USERNAME ="";
 app.get('/',function(req,res){
 	res.sendFile(path.resolve('./pages/WelcomePage.html'));
 });
+app.get('/Error', function(req,res){
+    res.sendFile(path.resolve('./pages/Error.html'));
+});
+
+app.get('/AddHoursError', function(req,res){
+    res.sendFile(path.resolve('./pages/ErrorField.html'));
+});
 
 app.get('/AddHours', function(req,res){
 
 	res.sendFile(path.resolve('./pages/AddHoursPage.html'));
 });
+
 app.post('/AddHours',async function(req,res){
 	var addedHours = req.body.hours||0;
 	var user = await UserModel.findOne({username:USERNAME});
 	if(!user){
 		console.log("error in USERNAME!")
 		res.sendFile(path.resolve('./pages/ErrorField.html'));
+
 	}
-	if(addedHours > parseInt(user.totalHours)- parseInt(user.hoursDone) ){
-		console.log("error - the field is empty!");
-		res.redirect('/AddHours');
+	if(addedHours > (parseInt(user.totalHours)- parseInt(user.hoursDone)) ){
+		console.log("error - hours added is more than hours left");
+		res.redirect('/AddHoursError');
 	}else{
 		var actualHours = parseInt(user.hoursDone)+parseInt(addedHours);
 		var leftHours = parseInt(user.totalHours) - actualHours;
@@ -58,9 +67,6 @@ app.get('/Home',function(req,res){
 	res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
 });
 app.post('/Home', async function(req,res){
-    // document.getElementsByName(hoursDone).value = "hello";
-    // console.log(await UserModel.username);
-	// //TODO: dispaly user's data
 });
 
 app.get('/Login',function(req,res){
@@ -109,9 +115,11 @@ app.post('/Register',async function(req,res){
 	try{
 		const user = await UserModel.findOne({username:username});
 		if(user){
+            res.redirect('/Error');
 			throw new Error('This username: '+username+' already taken!\nPlease try somthing else.');
-		}
-		const newUser = await UserModel.create({username,password,totalHours,totalMoney, hoursDone:"0"});
+        }else{
+            const newUser = await UserModel.create({username,password,totalHours,totalMoney, hoursDone:"0"});
+        }
 	}
 	catch(error){
 		console.log("ERROR!\n"+error);

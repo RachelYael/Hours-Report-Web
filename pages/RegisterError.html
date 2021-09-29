@@ -11,7 +11,7 @@
         body{
             text-align: center; 
             background-color: #d68488;
-            color: black;
+            color: white;
             font-size: larger;
             font-style: normal;
             font-family: Arial, Helvetica, sans-serif;
@@ -20,12 +20,15 @@
     
 
     </style>
-<body>
+<body style="background-image: url('./assets/img-home.jpg'); 
+background-repeat: no-repeat; background-size: cover; height: 500px;">
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
           <h1 class="display-4" style="font-size: 80px;"><b>Error !</b></h1>
           <h2 style="margin-top: 1cm; "><b>Register faild</b></h2>
-          <p class="lead" style="margin-top: 1cm; "> <b>You must fill all fields<br><br>Make sure that fields that contain numbers do have numbers<br><br> Please try again</b></p>
+          <div style="background-color: rgba(255, 255, 255, 0.459);">
+          <p class="lead" style="margin-top: 1cm; color: black; "> <b>You must fill all fields<br><br>Make sure that fields that contain numbers do have numbers<br><br> Please try again</b></p>
+        </div>
           <form action="/RegisterError" method="POST">
               <button class="btn btn-lg btn-warning" type="submit" style="margin-top: 1cm;">Try Again</button>
           </form>
