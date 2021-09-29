@@ -37,11 +37,12 @@
     <!-- Custom styles for this template -->
     <link href="/assets/styles.css" rel="stylesheet">
   </head>
-  <body class="text-center">
+  <body class="text-center" style="background-image: url('./assets/img-02.jpg'); 
+  background-repeat: no-repeat; background-size: cover; height: 500px;">
     
 <main class="form-signin">
   <form action="/Register" method="POST">
-    <h1 class="h3 mb-3 fw-normal">Lets Get It Started</h1>
+    <h1 class="display-6"><b>Lets Get It Started</b></h1>
 
     <div class="form-floating">
       <input type="text" name="Username" class="form-control top" id="floatingInput" placeholder="Username">
@@ -59,7 +60,11 @@
         <input type="text" name="Money" class="form-control bottom" id="floatingInput" placeholder="AmountOfMoney">
         <label for="floatingInput">Amount Of Money</label>
     </div>
-    <button class="button-color w-100 btn btn-lg btn-primary"  type="submit" >Submit</button>
+    <button class="button-color w-100 btn btn-lg btn-primary"  type="submit" 
+    style="background-color: rgba(110, 110, 110, 0.671); margin-top: 1cm;
+    border-color: rgba(110, 110, 110, 0.671);">Submit</button>
+    <!-- <button class="btn btn-secondary" style="background-color: rgba(110, 110, 110, 0.671); margin-top: 1cm;
+    border-color: rgba(110, 110, 110, 0.671);" onclick="window.location.href='/Register';"> -->
   </form>
 </main>
 

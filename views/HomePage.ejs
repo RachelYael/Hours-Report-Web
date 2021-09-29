@@ -11,8 +11,9 @@
 <style>
     body{
         text-align: center; 
-        background-color: #d68488;
-        color: white;
+        /* background-color: #d68488; */
+        background-color: white;
+        color: rgba(110, 110, 110, 0.671);
         font-size: larger;
         font-style: normal;
         font-family: Arial, Helvetica, sans-serif;
@@ -68,25 +69,28 @@
 </style>
 <body>
 
-    <!-- <form action="/Home" method="POST"> -->
-        <div class="dropdown" style="left: 250px;">
-            <button class="dropbtn">Menu</button>
-            <div class="dropdown-content">
-                <a href='/AddHours'>Add hours</a>
-                <a href='/'>Logout</a>
+    <!-- <form action="/Home" method="POST"> -->       
+        <div style="background-image: url('./assets/img-03.jpg'); 
+        background-repeat: no-repeat; background-size: cover; height: 500px;">
+            <div class="dropdown" style="left: 250px;">
+                <button class="dropbtn">Menu</button>
+                <div class="dropdown-content">
+                    <a href='/AddHours'>Add hours</a>
+                    <a href='/'>Logout</a>
+                </div>
             </div>
-        </div>
-        <div>
-            <h1 style="text-align: center;"><b>Hello <%= NameMarker %></b></h1>
-        </div>
-        <div style="text-align: center; margin-top: 1cm;">
-            <label>Hours until today: <%= DoneHoursMarker %></label>
-        </div>
-        <div style="text-align: center;">
-            <label >Hours left: <%= LeftHourMarker %></label>
-        </div>
-        <div style="text-align: center;">
-            <label >The amount of money you have accumulated: <%= MoneyMarker %></label>
+            <div>
+                <h1 class="display-1" style="text-align: center; font-style: italic;"><b>Hello, <%= NameMarker %></b></h1>
+            </div>
+            <div style="text-align: center; margin-top: 1cm; background-color: rgba(255, 255, 255, 0.424);;">
+                <label class="display-6">Hours until today: <%= DoneHoursMarker %></label>
+            </div>
+            <div style="text-align: center; margin-top: 0.5cm; background-color: rgba(255, 255, 255, 0.424);;">
+                <label class="display-6">Hours left: <%= LeftHourMarker %></label>
+            </div>
+            <div style="text-align: center; margin-top: 0.5cm; background-color: rgba(255, 255, 255, 0.424);;">
+                <label class="display-6">Money you have accumulated: <%= MoneyMarker %></label>
+            </div>
         </div>
     <!-- </form> -->
 
