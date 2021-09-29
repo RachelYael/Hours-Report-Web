@@ -28,11 +28,15 @@ app.get('/AddHours', function(req,res){
 });
 
 
-app.get('/Home',async function(req,res){
+
+app.get('/Home',function(req,res){
 	res.sendFile(path.resolve('./pages/VolunteerHomePage.html'));
 });
 
+
 app.post('/Home', async function(req,res){
+    document.getElementsByName(hoursDone).value = "hello";
+    console.log(await UserModel.username);
 	//TODO: dispaly user's data
 });
 
@@ -42,6 +46,10 @@ app.get('/Login',function(req,res){
 app.post('/Login',async function(req,res){
     var username = req.body.Username;
     var password = req.body.Password;
+    if(username ===""||password==="")
+	{
+		res.sendFile(path.resolve('./pages/LoginFieldsError.html'));
+	}
     try{
         const user = await UserModel.findOne({username:username, password:password});
         if(!user){
@@ -95,6 +103,10 @@ app.post('/Error',function(req,res){
 });
 
 app.post('/LoginError',function(req,res){
+	res.redirect('/Login');
+});
+
+app.post('/LoginFieldsError',function(req,res){
 	res.redirect('/Login');
 });
 
