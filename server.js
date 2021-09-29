@@ -19,6 +19,7 @@ app.use('/assets',express.static('assets'));
 app.use(bodyParser.urlencoded({extended:true}));
 
 
+var USERNAME ="";
 app.get('/',function(req,res){
 	res.sendFile(path.resolve('./pages/WelcomePage.html'));
 });
