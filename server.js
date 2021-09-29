@@ -54,19 +54,18 @@ app.post('/Login',async function(req,res){
         const user = await UserModel.findOne({username:username, password:password});
         if(!user){
             throw new Error('Wrong details');
-        }      
+        }
+		let moneyPerHour = parseFloat(user.totalMoney)/parseFloat(user.totalHours);
+		var Dhours =parseFloat(user.hoursDone)||0;
+		var money =moneyPerHour*Dhours ;
+		var leftHour = parseFloat(user.totalHours) - Dhours;
+		res.render("HomePage",{NameMarker:username,DoneHoursMarker:Dhours,LeftHourMarker:leftHour,MoneyMarker:money});
     }catch(error){
         console.log("login faild\n" + error);
 		res.sendFile(path.resolve('./pages/LoginError.html'));
     }
 
-	//TODO : need to see that it calc correctly (string-int issues......)
-	var moneyPerHour = user.totalMoney/user.totalHours;
-	var Dhours =user.hoursDone;
-	var money =moneyPerHour*Dhours ;
-	var leftHour = user.totalHours - Dhours;
-	res.render("HomePage",{NameMarker:username,DoneHoursMarker:Dhours,LeftHourMarker:leftHour,MoneyMarker:money});
-
+    
 });
 
 app.get('/Register',function(req,res){
